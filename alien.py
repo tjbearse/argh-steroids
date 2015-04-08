@@ -18,7 +18,7 @@ class Alien(sprite.Sprite):
                        [0.5, -0.4], [-0.5, -0.4],
                        [-0.7, 0]]
         self.direction = random.randint(1, 2) * 2 - 3
-        self.position = [world.width / 2 - self.direction * world.width / 2, 
+        self.position = [world.width / 2 - self.direction * world.width / 2 + self.direction, 
                          random.randint(0, world.height)]
         self.angle = 0
         self.scale = 10
