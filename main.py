@@ -9,6 +9,7 @@ import util
 import asteroid
 import text
 import world
+import player
 
 class Game(object):
     def __init__(self, surface):
@@ -188,6 +189,9 @@ def main():
     pygame.mouse.set_visible(False)
     pygame.display.set_caption("Argh, it's the Asteroids!!")
 
+    play = player.Player("python test.py")
+    print play.read_timeout(1)
+    quit()
     game = Game(surface)
 
     game.play_game()
