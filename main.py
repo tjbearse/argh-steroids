@@ -12,13 +12,14 @@ import world
 import player
 
 class Game(object):
-    def __init__(self, surface):
+    def __init__(self, surface, play):
         self.surface = surface
         self.world = world.World(surface)
         self.width = self.world.width
         self.height = self.world.height
         self.clock = pygame.time.Clock()
         self.level = 1
+        self.player = play
 
     def draw_hud(self):
         text.draw_string(self.surface, "SCORE %d" % self.world.score, 
@@ -163,7 +164,7 @@ class Game(object):
             while not self.world.quit:
                 self.level_start()
 
-                self.world.add_player()
+                self.world.add_player(self.player)
                 for i in range(self.level * 2):
                     asteroid.Asteroid(self.world, 
                                       random.randint(75, 100), 
@@ -190,9 +191,7 @@ def main():
     pygame.display.set_caption("Argh, it's the Asteroids!!")
 
     play = player.Player("python test.py")
-    print play.read_timeout(1)
-    quit()
-    game = Game(surface)
+    game = Game(surface, play)
 
     game.play_game()
 

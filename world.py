@@ -12,6 +12,7 @@ import text
 import alien
 import ship
 import asteroid
+import player
 
 class World(object):
     def __init__(self, surface):
@@ -39,6 +40,7 @@ class World(object):
 
         # the ship ... or none for no ship on screen
         self.player = None
+        self.player_driver = None
 
         # countdown timer until next alien
         self.alien_time = random.randint(1000, 2000)
@@ -61,9 +63,10 @@ class World(object):
     def add(self, sprite):
         self.sprites.append(sprite)
 
-    def add_player(self):
+    def add_player(self, driver):
         if not self.player:
             self.player = ship.Ship(self)
+            self.player_driver = driver
 
     def add_text(self, string, scale = 10):
         text.Character.string(self, string, 
@@ -74,18 +77,9 @@ class World(object):
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT: 
                 self.quit = True 
-
             if event.type == pygame.KEYDOWN or event.type == pygame.KEYUP:
                 if event.key == pygame.K_ESCAPE:
                     self.quit = event.type == pygame.KEYDOWN
-                elif event.key == pygame.K_LEFT:
-                    self.rotate_left = event.type == pygame.KEYDOWN
-                elif event.key == pygame.K_RIGHT:
-                    self.rotate_right = event.type == pygame.KEYDOWN
-                elif event.key == pygame.K_UP:
-                    self.thrust = event.type == pygame.KEYDOWN
-                elif event.key == pygame.K_SPACE:
-                    self.fire = event.type == pygame.KEYDOWN
                 elif event.key == pygame.K_s:
                     self.spawn = event.type == pygame.KEYDOWN
                 elif event.key == pygame.K_n:
@@ -97,16 +91,34 @@ class World(object):
                     self.info = event.type == pygame.KEYDOWN
                 elif event.key == pygame.K_RETURN:
                     self.enter = event.type == pygame.KEYDOWN
-            elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEBUTTONUP:
-                if event.button == 3:
-                    self.thrust = event.type == pygame.MOUSEBUTTONDOWN
-                elif event.button == 1:
-                    self.fire = event.type == pygame.MOUSEBUTTONDOWN
+        self.rotate_left = False
+        self.rotate_right = False
+        self.thrust = False
+        self.fire = False
+        if(self.player_driver):
+            try:
+                command = self.player_driver.read_timeout(1).split()
+                if len(command) != 3:
+                    raise ValueError('All commands are not present')
+                turn, thrust, fire = command
+                # turn
+                #if turn not in ['ccw', 'cw']:
+                    #raise ValueError("Turn has unexpected value")
+                self.rotate_left = (turn == 'ccw')
+                self.rotate_right = (turn == 'cw')
+                # thrust
+                #if thrust not in ['on', 'off']:
+                    #raise ValueError("Thrust has unexpected value")
+                self.thrust = (thrust == 'on')
+                # fire
+                self.fire = (fire == 'on')
+            # TODO more meaningful exception
+            except player.Empty:
+                print "timeout"
+            except ValueError as e:
+                print e.value
 
         self.particle.show(self.show_particles)
-
-        x, y = pygame.mouse.get_rel()
-        self.rotate_by = x / 5.0
 
         if self.rotate_left:
             self.rotate_by = -3

@@ -1,2 +1,4 @@
+
 #turn, thrust, fire
-print "ccw", "on", "on"
+while True:
+    print "ccw", "on", "on"
