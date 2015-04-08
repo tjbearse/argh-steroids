@@ -33,7 +33,7 @@ class World(object):
         self.info = False
         self.fire = False
         self.spawn = False
-        self.show_particles = True
+        self.show_particles = False
         self.enter = False
         self.next_level = False
 
