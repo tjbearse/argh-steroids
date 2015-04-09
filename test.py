@@ -1,4 +1,7 @@
+import sys
 
 #turn, thrust, fire
 while True:
-    print "ccw", "on", "on"
+    sys.stdin.readline()
+    sys.stdout.write("ccw on on\n")
+    sys.stdout.flush()

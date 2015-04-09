@@ -19,8 +19,8 @@ class Player(object):
         self._proc = subprocess.Popen(invoke_str.split(),
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
-                bufsize=1,
-                close_fds=ON_POSIX
+                #bufsize=1,
+                #close_fds=ON_POSIX
             )
         self._queue = Queue()
         self._thread = Thread(target=enqueue_output, args=(self._proc.stdout, self._queue))
@@ -34,3 +34,7 @@ class Player(object):
 
     def read_timeout(self, timeout):
         return self._queue.get(timeout=timeout)
+
+    def write(self, string):
+        self._proc.stdin.write("%s\n" % string)
+        self._proc.stdin.flush()

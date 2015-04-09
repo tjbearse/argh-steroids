@@ -96,6 +96,7 @@ class World(object):
         self.thrust = False
         self.fire = False
         if(self.player_driver):
+            self.player_driver.write("test")
             try:
                 command = self.player_driver.read_timeout(1).split()
                 if len(command) != 3:
@@ -116,7 +117,7 @@ class World(object):
             except player.Empty:
                 print "timeout"
             except ValueError as e:
-                print e.value
+                print e
 
         self.particle.show(self.show_particles)
 
