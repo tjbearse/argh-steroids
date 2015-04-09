@@ -15,10 +15,10 @@ running = True
 count = 0;
 
 
+rotate_left = False
+rotate_right = False
 while running and count < 10000:
     state.read()
-    rotate_left = False
-    rotate_right = False
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
