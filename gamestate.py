@@ -18,11 +18,14 @@ class Asteroid(Entity):
         super(Asteroid, self).__init__(pos, vel)
 
 class GameState():
-    def __init__(self):
+    def __init__(self, fd=sys.stdin):
         self.asteroids = []
         self.bullets = []
         self.alien = None
         self.ship = None
+        self.height, self.width = fd.readline().split()
+        self.height = int(self.height)
+        self.width = int(self.width)
 
     def read(self, fd=sys.stdin):
         num = int(fd.readline())

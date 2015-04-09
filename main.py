@@ -21,6 +21,7 @@ class Game(object):
         self.clock = pygame.time.Clock()
         self.level = 1
         self.player = play
+        play.write("%i %i" % (self.width, self.height))
 
     def draw_hud(self):
         text.draw_string(self.surface, "SCORE %d" % self.world.score, 
