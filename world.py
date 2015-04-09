@@ -133,6 +133,8 @@ class World(object):
             self.rotate_by = -3
         elif self.rotate_right:
             self.rotate_by = 3
+        else:
+            self.rotate_by = 0
 
         if self.player:
             if self.thrust:
