@@ -39,6 +39,13 @@ class Ship(sprite.Sprite):
     def typename(self):
         return "ship"
 
+    def __str__(self):
+        return "%s %d %d" % (
+                super(Ship, self).__str__(),
+                self.angle,
+                self.shields
+                )
+
     def rotate_right(self):
         self.angle += 3
         if self.angle > 360:

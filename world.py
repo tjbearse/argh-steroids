@@ -111,7 +111,7 @@ class World(object):
                     raise ValueError('All commands are not present')
                 turn, thrust, fire = command
                 # turn
-                #if turn not in ['ccw', 'cw']:
+                #if turn not in ['ccw', 'cw', 'off']:
                     #raise ValueError("Turn has unexpected value")
                 self.rotate_left = (turn == 'ccw')
                 self.rotate_right = (turn == 'cw')

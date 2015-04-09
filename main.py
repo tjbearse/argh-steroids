@@ -4,6 +4,7 @@ import random
 import math
 
 import pygame
+import sys
 
 import util
 import asteroid
@@ -190,7 +191,7 @@ def main():
     pygame.mouse.set_visible(False)
     pygame.display.set_caption("Argh, it's the Asteroids!!")
 
-    play = player.Player("python test.py")
+    play = player.Player(sys.argv[1])
     game = Game(surface, play)
 
     game.play_game()

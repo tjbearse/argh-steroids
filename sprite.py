@@ -18,11 +18,10 @@ class Sprite(object):
         world.add(self)
 
     def __str__(self):
-        return "%s (%d,%d) (%d,%d) %d" % (
+        return "%s (%d,%d) (%d,%d)" % (
                 self.typename(),
                 self.position[0], self.position[1],
-                self.velocity[0], self.velocity[1],
-                self.scale
+                self.velocity[0], self.velocity[1]
                 )
 
     def test_collisions(self, possible_sprites):

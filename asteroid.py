@@ -39,6 +39,12 @@ class Asteroid(sprite.Sprite):
     def typename(self):
         return "asteroid"
 
+    def __str__(self):
+        return "%s %d" % (
+                super(Asteroid, self).__str__(),
+                self.scale
+                )
+
     def update(self):
         self.angle += self.angular_velocity
         super(Asteroid, self).update()
