@@ -17,7 +17,7 @@ count = 0;
 
 rotate_left = False
 rotate_right = False
-while running and count < 10000:
+while running:
     state.read()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -42,4 +42,3 @@ while running and count < 10000:
 
     pygame.display.flip()
     r.send()
-    count += 1
