@@ -188,7 +188,7 @@ def main():
 
     #surface = pygame.display.set_mode([0, 0], pygame.FULLSCREEN)
     surface = pygame.display.set_mode([1000, 1000])
-    pygame.mouse.set_visible(False)
+    #pygame.mouse.set_visible(False)
     pygame.display.set_caption("Argh, it's the Asteroids!!")
 
     play = player.Player(sys.argv[1])
