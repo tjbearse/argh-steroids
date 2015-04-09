@@ -17,6 +17,14 @@ class Sprite(object):
         self.angle = 0
         world.add(self)
 
+    def __str__(self):
+        return "%s (%d, %d) (%d, %d) %d" % (
+                self.typename(),
+                self.position[0], self.position[1],
+                self.velocity[0], self.velocity[1],
+                self.scale
+                )
+
     def test_collisions(self, possible_sprites):
         width = self.world.width
         height = self.world.height

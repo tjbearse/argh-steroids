@@ -18,6 +18,9 @@ class Bullet(sprite.Sprite):
         self.scale = 2
         self.life = 100
         self.angle = 0
+    
+    def typename(self):
+        return "bullet"
 
     def update(self):
         super(Bullet, self).update()

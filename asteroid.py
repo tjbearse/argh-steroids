@@ -36,6 +36,9 @@ class Asteroid(sprite.Sprite):
         self.scale = scale
         self.angular_velocity = random.random() * 4 - 2
 
+    def typename(self):
+        return "asteroid"
+
     def update(self):
         self.angle += self.angular_velocity
         super(Asteroid, self).update()

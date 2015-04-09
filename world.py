@@ -45,6 +45,13 @@ class World(object):
         # countdown timer until next alien
         self.alien_time = random.randint(1000, 2000)
 
+    def state(self):
+        res = str(len(self.sprites))
+        for sprite in self.sprites:
+           res += "\n" + str(sprite)
+        res += "\nstop"
+        return res
+
     def n_objects(self):
         return len(self.sprites)
 
@@ -96,7 +103,8 @@ class World(object):
         self.thrust = False
         self.fire = False
         if(self.player_driver):
-            self.player_driver.write("test")
+            state = self.state()
+            self.player_driver.write(state)
             try:
                 command = self.player_driver.read_timeout(1).split()
                 if len(command) != 3:

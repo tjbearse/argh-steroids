@@ -25,6 +25,9 @@ class Alien(sprite.Sprite):
         self.direction_timer = random.randint(10, 50)
         self.random_velocity()
 
+    def typename(self):
+        return "alien"
+
     def random_velocity(self):
         self.velocity = [self.direction * (random.random() * 2 + 1), 
                          random.random() * 6 - 3]
