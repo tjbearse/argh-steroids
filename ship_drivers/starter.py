@@ -7,7 +7,7 @@ def closest(ent, entities):
 
 def dist(entity, other):
     # note this does not take wrap around into account
-    return ((entity.x - other.x)**2 + (entity.y - other.y)**2)**(1/2)
+    return ((entity.x - other.x)**2 + (entity.y - other.y)**2)**(1.0/2)
 
 def getAngle(entity, other):
     # gives the angle of the vector from entity to other
@@ -32,14 +32,19 @@ while True:
     # get game state
     state.read()
 
-    close = closest(state.ship, state.asteroids)
-    angle = getAngle(state.ship, close)
-    print >>sys.stderr, ((state.ship.x, state.ship.y), (close.x, close.y), getAngle(state.ship, close))
+    if(state.asteroids):
+        close = closest(state.ship, state.asteroids)
+        angle = getAngle(state.ship, close)
+        thresh = 15
+        if(state.ship.angle > angle):
+            r.set_ccw()
+        elif(state.ship.angle < angle):
+            r.set_cw()
 
-    # set command
-    r.set_fire(False)
+        r.set_fire(abs(state.ship.angle - angle) < thresh)
+
+
     r.set_thrust(False)
-    r.set_no_turn()
 
     # send command
     r.send()
