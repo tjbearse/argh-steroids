@@ -76,6 +76,7 @@ class Ship(sprite.Sprite):
             b = util.sin(self.angle)
 
             projectile = bullet.Bullet(self.world)
+            self.world.score = max(self.world.score - self.world.settings.bullet_cost, 0)
             projectile.position = [self.position[0] + self.scale * a,
                                    self.position[1] + self.scale * b]
             projectile.velocity = [a * 7.0 + self.velocity[0],
