@@ -16,15 +16,15 @@ import player
 
 
 class Game(object):
-    def __init__(self, surface, play):
+    def __init__(self, surface, settings):
         self.surface = surface
-        self.world = world.World(surface)
+        self.world = world.World(surface, settings)
         self.width = self.world.width
         self.height = self.world.height
         self.clock = pygame.time.Clock()
         self.level = 1
-        self.player = play
-        play.write("%i %i" % (self.width, self.height))
+        self.player = player.Player(settings.driver)
+        self.player.write("%i %i" % (self.width, self.height))
 
     def draw_hud(self):
         text.draw_string(self.surface, "SCORE %d" % self.world.score, 
@@ -186,8 +186,11 @@ class Game(object):
             self.epilogue()
 
 def main():
-    parser = argparse.ArgumentParser(description='Asteroids AI Client')
+    parser = argparse.ArgumentParser(description='Asteroids AI Client',
+            fromfile_prefix_chars='@')
     parser.add_argument('-d', '--driver', dest='driver', metavar='driver', required=True)
+    parser.add_argument('--no-shield--regen', dest='sheild_regen', action='store_false')
+    parser.add_argument('--shield--regen', dest='sheild_regen', action='store_true')
     args = parser.parse_args()
 
     pygame.init()
@@ -199,8 +202,7 @@ def main():
     #pygame.mouse.set_visible(False)
     pygame.display.set_caption("Argh, it's the Asteroids!!")
 
-    play = player.Player(args.driver)
-    game = Game(surface, play)
+    game = Game(surface, args)
 
     game.play_game()
 

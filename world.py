@@ -15,7 +15,7 @@ import asteroid
 import player
 
 class World(object):
-    def __init__(self, surface):
+    def __init__(self, surface, settings):
         self.surface = surface
         self.width = surface.get_width()
         self.height = surface.get_height()
@@ -24,6 +24,7 @@ class World(object):
         self.score = 0
         self.n_asteroids = 0
         self.text_y = 100
+        self.settings = settings
 
         # input state
         self.quit = False
