@@ -18,7 +18,7 @@ class Sprite(object):
         world.add(self)
 
     def __str__(self):
-        return "%s (%d,%d) (%d,%d)" % (
+        return "%s (%f,%f) (%f,%f)" % (
                 self.typename(),
                 self.position[0], self.position[1],
                 self.velocity[0], self.velocity[1]

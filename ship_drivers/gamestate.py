@@ -2,8 +2,8 @@ import sys
 
 class Entity(object):
     def __init__(self, pos, vel):
-        self.x, self.y = [int(val) for val in pos[1:-1].split(',')]
-        self.x, self.y = [int(val) for val in pos[1:-1].split(',')]
+        self.x, self.y = [float(val) for val in pos[1:-1].split(',')]
+        self.dx, self.dy = [float(val) for val in vel[1:-1].split(',')]
 
 
 class Ship(Entity):
