@@ -15,6 +15,7 @@ import asteroid
 import player
 
 class World(object):
+    SECOND_EVENT = pygame.USEREVENT + 1
     def __init__(self, surface, settings):
         self.surface = surface
         self.width = surface.get_width()
@@ -25,6 +26,7 @@ class World(object):
         self.n_asteroids = 0
         self.text_y = 100
         self.settings = settings
+        pygame.time.set_timer(self.SECOND_EVENT, 1000)
 
         # input state
         self.quit = False
@@ -85,7 +87,9 @@ class World(object):
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT: 
                 self.quit = True 
-            if event.type == pygame.KEYDOWN or event.type == pygame.KEYUP:
+            elif event.type == self.SECOND_EVENT:
+                self.score = max(self.score - self.settings.time_cost, 0)
+            elif event.type == pygame.KEYDOWN or event.type == pygame.KEYUP:
                 if event.key == pygame.K_ESCAPE:
                     self.quit = event.type == pygame.KEYDOWN
                 elif event.key == pygame.K_s:
