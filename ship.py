@@ -88,10 +88,11 @@ class Ship(sprite.Sprite):
         self.reload_timer = max(0, self.reload_timer - 1)
         self.shield_tick += 1
 
-        self.regenerate_timer = max(0, self.regenerate_timer - 1)
-        if self.regenerate_timer == 0 and self.shields < self.max_shields:
-            self.regenerate_timer = 500 
-            self.shields += 1
+        if(self.world.settings.shield_regen):
+            self.regenerate_timer = max(0, self.regenerate_timer - 1)
+            if self.regenerate_timer == 0 and self.shields < self.max_shields:
+                self.regenerate_timer = 500 
+                self.shields += 1
 
         super(Ship, self).update()
 

@@ -189,8 +189,8 @@ def main():
     parser = argparse.ArgumentParser(description='Asteroids AI Client',
             fromfile_prefix_chars='@')
     parser.add_argument('-d', '--driver', dest='driver', metavar='driver', required=True)
-    parser.add_argument('--no-shield--regen', dest='sheild_regen', action='store_false')
-    parser.add_argument('--shield--regen', dest='sheild_regen', action='store_true')
+    parser.add_argument('--no-shield-regen', dest='shield_regen', default=False, action='store_false')
+    parser.add_argument('--shield-regen', dest='shield_regen', action='store_true')
     args = parser.parse_args()
 
     pygame.init()
