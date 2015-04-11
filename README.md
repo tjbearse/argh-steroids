@@ -57,5 +57,6 @@ a [WebGL version](http://jcupitt.github.io/argh-steroids-webgl).
 # Author
 
 Original Argh-Steroids Game: John Cupitt
+
 Contest modifications: TJ Bearse
 
