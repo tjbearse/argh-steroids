@@ -1,6 +1,6 @@
-# Argh-steroids
+# Argh-steroids AI-Contest
 
-Asteroids-like game using pygame. 
+An Asteroids AI contest using jcupitt's Argh-Steroids as the base. Ship controls have been pulled out and replaced with a command line argument for an executable to be run as a child process. This process will receive the map data via stdin and decide how to maneuver the ship via stdout.
 
 Install [pygame](http://pygame.org) and run `main.py`.  Alternatively, there's 
 a [WebGL version](http://jcupitt.github.io/argh-steroids-webgl).
@@ -8,7 +8,7 @@ a [WebGL version](http://jcupitt.github.io/argh-steroids-webgl).
 ![Start screen](/screenshots/start_screen.png)
 ![In play](/screenshots/play.png)
 
-# Features
+# Game Features
 
 * Asteroids bump off each other. It uses a map to make collision detection
   fast.
@@ -56,4 +56,6 @@ a [WebGL version](http://jcupitt.github.io/argh-steroids-webgl).
  
 # Author
 
-John Cupitt
+Original Argh-Steroids Game: John Cupitt
+Contest modifications: TJ Bearse
+
