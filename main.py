@@ -3,14 +3,17 @@
 import random
 import math
 
-import pygame
 import sys
+import argparse
+
+import pygame
 
 import util
 import asteroid
 import text
 import world
 import player
+
 
 class Game(object):
     def __init__(self, surface, play):
@@ -183,6 +186,10 @@ class Game(object):
             self.epilogue()
 
 def main():
+    parser = argparse.ArgumentParser(description='Asteroids AI Client')
+    parser.add_argument('-d', '--driver', dest='driver', metavar='driver', required=True)
+    args = parser.parse_args()
+
     pygame.init()
 
     font = pygame.font.Font(None, 16)
@@ -192,7 +199,7 @@ def main():
     #pygame.mouse.set_visible(False)
     pygame.display.set_caption("Argh, it's the Asteroids!!")
 
-    play = player.Player(sys.argv[1])
+    play = player.Player(args.driver)
     game = Game(surface, play)
 
     game.play_game()
