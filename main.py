@@ -191,7 +191,7 @@ def main():
     parser.add_argument('-d', '--driver', dest='driver', metavar='driver', required=True)
     parser.add_argument('--no-shield-regen', dest='shield_regen', default=False, action='store_false')
     parser.add_argument('--shield-regen', dest='shield_regen', action='store_true')
-    parser.add_argument('--bullet-cost', dest='bullet_cost', default=1, type=int)
+    parser.add_argument('--bullet-cost', dest='bullet_cost', default=0, type=int)
     parser.add_argument('--time-cost', dest='time_cost', default=0, type=int)
     args = parser.parse_args()
 
