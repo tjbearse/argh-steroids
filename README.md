@@ -1,59 +1,19 @@
 # Argh-steroids AI-Contest
 
-An Asteroids AI contest using jcupitt's Argh-Steroids as the base. Ship controls have been pulled out and replaced with a command line argument for an executable to be run as a child process. This process will receive the map data via stdin and decide how to maneuver the ship via stdout.
+An Asteroids AI contest using jcupitt's Argh-Steroids as the base program. Ship controls have been pulled out and replaced with a child process that contestants will supply. This process will receive the map data via stdin and command the ship via stdout.
 
-Install [pygame](http://pygame.org) and run `main.py`.  Alternatively, there's 
-a [WebGL version](http://jcupitt.github.io/argh-steroids-webgl).
-
-![Start screen](/screenshots/start_screen.png)
 ![In play](/screenshots/play.png)
 
-# Game Features
-
-* Asteroids bump off each other. It uses a map to make collision detection
-  fast.
-
-* Your ship has a shield and you can bump into asteroids a few times. The
-  shield regenerates slowly.
-
-* Mouse and keyboard controls.
-
-* Vector graphics using an affine transform rather than a lot of trig
-  functions. 
-
-* Particle system for explosions.
-
-* Small, simple code. It's only 1,200 lines for everything, it should be easy 
-  to hack on.
-
-* It's fast enough on a Raspberry-Pi 2. On my modest laptop it can animate 
-  more than 200 asteroids and more than 5,000 particles at 60 fps.
-
-# Secret keys
-
-* Hold 'S' during level start animation to spawn extra asteroids for testing.
-
-* Hold 'I' to see object and FPS counts.
-
-* Press 'P' to toggle particles on and off. This can help the framerate
-  on slower systems.
-
-* Press 'N' to skip to the next level. Handy for testing. 
-
-# TODO
-
-* There's no sound. 
-
-* Collision detection is just touching circles, we could look at the geometry
-  as well to get pixel-perfect detection.
-
-* Collision physics just exchanges the two velocities, we could do true
-  billiard-ball collisions.
-
-* The wrap-around is rather crude. We could draw sprites as they wrap.
-
-* Python2 only, it would be easy to make it work with both.
+## Getting Started
+- Install python and [pygame](http://pygame.org)
+- Clone this repo
+- Fork/Clone the [starter ship repo](https://github.com/tjbearse/AI-Ships)
+- run `./argh-steroids/main.py -d ./AI-Ships/starter.py` to run the starter (if that gives you problems also try `python argh-steroids/main.py -d "python AI-Ships/starter.py"`
+- start modifying starter.py to make improvements!
  
+###Having Trouble?
+Email me at bearse.thomas@gmail.com or create an issue in this repo. 
+
 # Author
 
 Original Argh-Steroids Game: John Cupitt
