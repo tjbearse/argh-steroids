@@ -23,8 +23,14 @@ class Game(object):
         self.height = self.world.height
         self.clock = pygame.time.Clock()
         self.level = 1
-        self.player = player.Player(settings.driver)
-        self.player.write("%i %i" % (self.width, self.height))
+        try:
+            self.player = player.Player(settings.driver)
+            self.player.write("%i %i" % (self.width, self.height))
+        except PlayerError as e:
+            self.world.reset()
+            self.world.add_text(e.value, scale=20)
+            raise
+
 
     def draw_hud(self):
         text.draw_string(self.surface, "SCORE %d" % self.world.score, 
@@ -205,8 +211,8 @@ def main():
     pygame.display.set_caption("Argh, it's the Asteroids!!")
 
     game = Game(surface, args)
-
     game.play_game()
+
 
     pygame.quit()
 

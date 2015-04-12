@@ -107,30 +107,24 @@ class World(object):
         self.rotate_right = False
         self.thrust = False
         self.fire = False
-        if(self.player_driver):
+        if(self.player_driver and self.player):
             state = self.state()
             self.player_driver.write(state)
-            try:
-                command = self.player_driver.read_timeout(1).split()
-                if len(command) != 3:
-                    raise ValueError('All commands are not present')
-                turn, thrust, fire = command
-                # turn
-                #if turn not in ['ccw', 'cw', 'off']:
-                    #raise ValueError("Turn has unexpected value")
-                self.rotate_left = (turn == 'ccw')
-                self.rotate_right = (turn == 'cw')
-                # thrust
-                #if thrust not in ['on', 'off']:
-                    #raise ValueError("Thrust has unexpected value")
-                self.thrust = (thrust == 'on')
-                # fire
-                self.fire = (fire == 'on')
-            # TODO more meaningful exception
-            except player.Empty:
-                print "timeout"
-            except ValueError as e:
-                print e
+            command = self.player_driver.read_timeout(1).split()
+            if len(command) != 3:
+                raise ValueError('All commands are not present')
+            turn, thrust, fire = command
+            # turn
+            #if turn not in ['ccw', 'cw', 'off']:
+                #raise ValueError("Turn has unexpected value")
+            self.rotate_left = (turn == 'ccw')
+            self.rotate_right = (turn == 'cw')
+            # thrust
+            #if thrust not in ['on', 'off']:
+                #raise ValueError("Thrust has unexpected value")
+            self.thrust = (thrust == 'on')
+            # fire
+            self.fire = (fire == 'on')
 
         self.particle.show(self.show_particles)
 
