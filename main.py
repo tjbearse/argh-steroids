@@ -20,6 +20,7 @@ import video
 class Game(object):
     def __init__(self, surface, settings):
         self.surface = surface
+        self.settings = settings
         self.world = world.World(surface, settings)
         self.width = self.world.width
         self.height = self.world.height
@@ -32,9 +33,6 @@ class Game(object):
             self.world.reset()
             self.world.add_text(e.value, scale=20)
             raise
-
-        self.video = video.VidCapture(self.surface, 2)
-
 
     def draw_hud(self):
         text.draw_string(self.surface, "SCORE %d" % self.world.score, 
@@ -105,6 +103,7 @@ class Game(object):
             self.world.draw()
             self.clock.tick(60)
             pygame.display.flip()
+            self.video.capture()
 
     def play_level(self):
         while not self.world.quit:
@@ -148,6 +147,7 @@ class Game(object):
             self.world.draw()
             self.clock.tick(60)
             pygame.display.flip()
+            self.video.capture()
 
     def epilogue(self):
         while not self.world.quit:
@@ -177,6 +177,11 @@ class Game(object):
             self.world.reset()
             self.world.particle.starfield()
 
+            if self.settings.video_cap:
+                self.video = video.VidCapture(self.surface, self.settings.video_cap_rate, self.settings.video_out)
+            else:
+                self.video = video.DummyCap()
+
             while not self.world.quit:
                 self.level_start()
 
@@ -193,7 +198,9 @@ class Game(object):
 
                 self.level += 1
 
+
             self.game_over()
+            self.video.publish()
             self.epilogue()
 
 def main():
@@ -206,6 +213,12 @@ def main():
     parser.add_argument('--time-cost', dest='time_cost', default=0, type=int)
     parser.add_argument('--width', dest='width', default=1000, type=int)
     parser.add_argument('--height', dest='height', default=1000, type=int)
+
+    video_group = parser.add_argument_group('video')
+    video_group.add_argument('--video-capture', dest='video_cap', default=False, action='store_true')
+    video_group.add_argument('--skip-frames', dest='video_cap_rate', default=3, type=int)
+    video_group.add_argument('--out-file', dest='video_out', default='video.avi')
+
     args = parser.parse_args()
 
     pygame.init()
