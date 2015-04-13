@@ -199,6 +199,8 @@ def main():
     parser.add_argument('--shield-regen', dest='shield_regen', action='store_true')
     parser.add_argument('--bullet-cost', dest='bullet_cost', default=0, type=int)
     parser.add_argument('--time-cost', dest='time_cost', default=0, type=int)
+    parser.add_argument('--width', dest='width', default=1000, type=int)
+    parser.add_argument('--height', dest='height', default=1000, type=int)
     args = parser.parse_args()
 
     pygame.init()
@@ -206,7 +208,7 @@ def main():
     font = pygame.font.Font(None, 16)
 
     #surface = pygame.display.set_mode([0, 0], pygame.FULLSCREEN)
-    surface = pygame.display.set_mode([1000, 1000])
+    surface = pygame.display.set_mode([args.width, args.height])
     #pygame.mouse.set_visible(False)
     pygame.display.set_caption("Argh, it's the Asteroids!!")
 
