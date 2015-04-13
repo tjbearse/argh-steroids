@@ -14,6 +14,8 @@ import text
 import world
 import player
 
+import video
+
 
 class Game(object):
     def __init__(self, surface, settings):
@@ -30,6 +32,8 @@ class Game(object):
             self.world.reset()
             self.world.add_text(e.value, scale=20)
             raise
+
+        self.video = video.VidCapture(self.surface, 2)
 
 
     def draw_hud(self):
@@ -119,6 +123,7 @@ class Game(object):
             self.world.draw()
             self.clock.tick(60)
             pygame.display.flip()
+            self.video.capture()
 
     def game_over(self):
         end_animation_frames = 100
