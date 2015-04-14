@@ -201,18 +201,18 @@ class Game(object):
 def main():
     parser = argparse.ArgumentParser(description='Asteroids AI Client',
             fromfile_prefix_chars='@')
-    parser.add_argument('-d', '--driver', dest='driver', metavar='driver', required=True)
+    parser.add_argument('-d', '--driver', dest='driver', metavar='driver', required=True, help="Program that will drive the ship")
     parser.add_argument('--no-shield-regen', dest='shield_regen', default=False, action='store_false')
     parser.add_argument('--shield-regen', dest='shield_regen', action='store_true')
-    parser.add_argument('--bullet-cost', dest='bullet_cost', default=0, type=int)
-    parser.add_argument('--time-cost', dest='time_cost', default=0, type=int)
-    parser.add_argument('--width', dest='width', default=1000, type=int)
-    parser.add_argument('--height', dest='height', default=1000, type=int)
+    parser.add_argument('--bullet-cost', dest='bullet_cost', default=0, type=int, help="Make firing reduce the score (be accurate!)")
+    parser.add_argument('--time-cost', dest='time_cost', default=0, type=int, help="Score depletes over time (play fast!)")
+    parser.add_argument('--width', dest='width', default=1000, type=int, help="Screen width")
+    parser.add_argument('--height', dest='height', default=1000, type=int, help="Screen height")
 
-    video_group = parser.add_argument_group('video')
-    video_group.add_argument('--video-capture', dest='video_cap', default=False, action='store_true')
-    video_group.add_argument('--skip-frames', dest='video_cap_rate', default=3, type=int)
-    video_group.add_argument('--out-file', dest='video_out', default='video.avi')
+    video_group = parser.add_argument_group('video', 'for capturing video')
+    video_group.add_argument('--video-capture', dest='video_cap', default=False, action='store_true', help="turn on video capture. This will slow down the game. Overwrites the file for each run.")
+    video_group.add_argument('--skip-frames', dest='video_cap_rate', default=3, type=int, help="the number of game frames to skip between video frames (higher runs faster but makes video stop-motion)")
+    video_group.add_argument('--out-file', dest='video_out', default='video.avi', help="file to write video out to")
 
     args = parser.parse_args()
 
