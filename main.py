@@ -43,11 +43,6 @@ class Game(object):
     def start_screen(self):
         self.world.add_text('ARGH ITS THE ASTEROIDS', scale = 20)
         self.world.add_text('PRESS ESC TO QUIT') 
-        self.world.add_text('PRESS LEFT AND RIGHT TO ROTATE') 
-        self.world.add_text('PRESS UP FOR THRUST')
-        self.world.add_text('PRESS SPACE FOR FIRE')
-        self.world.add_text('OR USE MOUSE CONTROLS') 
-        self.world.add_text('WATCH OUT FOR ALLEN THE ALIEN')
         self.world.add_text('PRESS ENTER TO START', scale = 20)
 
         for i in range(4):
