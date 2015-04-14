@@ -13,7 +13,10 @@ An Asteroids AI contest using jcupitt's Argh-Steroids as the base program. Ship 
 - Check out the [facebook page](https://www.facebook.com/pages/Programming-Competition/1787964051429244) to discuss ideas, ask for help or show off your ship!
  
 ###Having Trouble?
-Email me at bearse.thomas@gmail.com, create an issue in this repo or throw a post up on the [facebook page](https://www.facebook.com/pages/Programming-Competition/1787964051429244). 
+- Take a look at `./main.py --help`
+- Email me at bearse.thomas@gmail.com
+- Create an issue in this repo
+- Throw a post up on the [facebook page](https://www.facebook.com/pages/Programming-Competition/1787964051429244). 
 
 # Author
 
