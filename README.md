@@ -8,11 +8,12 @@ An Asteroids AI contest using jcupitt's Argh-Steroids as the base program. Ship 
 - Install python and [pygame](http://pygame.org)
 - Clone this repo
 - Fork/Clone the [starter ship repo](https://github.com/tjbearse/AI-Ships)
-- run `./argh-steroids/main.py -d ./AI-Ships/starter.py` to run the starter (if that gives you problems also try `python argh-steroids/main.py -d "python AI-Ships/starter.py"`
-- start modifying starter.py to make improvements!
+- Run `./argh-steroids/main.py -d ./AI-Ships/starter.py` to run the starter (if that gives you problems also try `python argh-steroids/main.py -d "python AI-Ships/starter.py"`
+- Start modifying starter.py to make improvements! Want to write code in a language other than python? Let me know and I can get you the necesary info or help you get a new starter file going!
+- Check out the [facebook page](https://www.facebook.com/pages/Programming-Competition/1787964051429244) to discuss ideas, ask for help or show off your ship!
  
 ###Having Trouble?
-Email me at bearse.thomas@gmail.com or create an issue in this repo. 
+Email me at bearse.thomas@gmail.com, create an issue in this repo or throw a post up on the [facebook page](https://www.facebook.com/pages/Programming-Competition/1787964051429244). 
 
 # Author
 
