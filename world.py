@@ -165,8 +165,8 @@ class World(object):
 
         # 100 is the max size of the asteroids we make
         map_spacing = 100
-        map_width = int(math.ceil(float(self.width) / map_spacing))
-        map_height = int(math.ceil(float(self.height) / map_spacing))
+        map_width = int(math.ceil(float(self.width+1) / map_spacing))
+        map_height = int(math.ceil(float(self.height+1) / map_spacing))
         world_map = []
         for x in range(map_width):
             map_row = [[] for y in range(map_height)]

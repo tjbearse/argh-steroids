@@ -52,4 +52,4 @@ class Alien(sprite.Sprite):
 
     def impact(self, other):
         self.angle = random.randint(-90, 90)
-        super(Alien, self).impact(other)
+        return super(Alien, self).impact(other)

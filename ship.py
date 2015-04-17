@@ -107,7 +107,7 @@ class Ship(sprite.Sprite):
                 self.world.particle.explosion2(300, 
                                                self.position, self.velocity)
 
-        super(Ship, self).impact(other)
+        return super(Ship, self).impact(other)
 
     def draw(self):
         super(Ship, self).draw()
