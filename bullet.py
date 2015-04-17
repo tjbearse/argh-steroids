@@ -58,3 +58,4 @@ class Bullet(sprite.Sprite):
                     new_asteroid.position[1] = other.position[1]
                     new_asteroid.velocity[0] += other.velocity[0]
                     new_asteroid.velocity[1] += other.velocity[1]
+		return False

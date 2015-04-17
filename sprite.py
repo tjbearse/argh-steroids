@@ -80,11 +80,11 @@ class Sprite(object):
 
             # tell the objects they have collided ... both objects need to be
             # told
-            self.impact(other)
-            other.impact(self)
+            do_collision = self.impact(other)
+            do_collision = do_collision and other.impact(self)
 
             # don't do the physics if either object is now dead
-            if not self.kill and not other.kill:
+            if not self.kill and not other.kill and do_collision:
                 self.collide(other)
 
             break
@@ -92,7 +92,7 @@ class Sprite(object):
     # this method is triggered for both objects involved in the collision ... do
     # asymmetric things like bullets blowing up aliens
     def impact(self, other):
-        pass
+        return True
 
     # this is triggered just once, so symmetric things happen in this, like
     # physics
