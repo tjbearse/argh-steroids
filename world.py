@@ -110,7 +110,7 @@ class World(object):
         if(self.player_driver and self.player):
             state = self.state()
             self.player_driver.write(state)
-            command = self.player_driver.read_timeout(1).split()
+            command = self.player_driver.read_timeout(self.settings.timeout).split()
             if len(command) != 3:
                 raise ValueError('All commands are not present')
             turn, thrust, fire = command
